@@ -1,0 +1,385 @@
+body {
+  font-family: 'Poppins', sans-serif !important;
+  
+}
+
+*:focus {
+  outline: none !important;
+}
+
+
+.custom-search-input {
+  border: none;
+  border-bottom: 2px solid #757575;
+  background: transparent;
+  outline: none;
+  padding-bottom: 5px;
+  min-width: 250px;
+  text-indent: 40px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.search-area {
+  display: inline-block;
+}
+
+.search-icon {
+  font-size: 18px;
+  margin-right: -20px;
+  margin-top: 3px;
+}
+
+@media (max-width: 768px){
+  .navbar-expand-md .navbar-collapse{
+    display: flex !important;
+    flex-basis: auto;
+  }
+
+}
+
+.user-name{
+  font-size: 13px !important;
+}
+
+.dropdown-item:hover{
+  color: black;
+}
+
+.dropdown{
+  margin-left: 0px;
+}
+#sidebar-flex{
+  max-width: 325px;
+}
+
+@media (max-width: 768px){
+  #button-save-cancel-responsive{
+    margin-top: 90px;
+  }
+}
+
+@media (max-width: 1280px) {
+  
+
+  #sidebar-flex{
+    width: 90px;
+  }
+
+  .user-avatar img{
+    margin-left: 0px !important;
+  }
+  .user-name{
+    display: none !important;
+  }
+  
+  .user-avatar img{
+    width: 40px;
+    height: 40px;
+  }
+  .nav-link span{
+    display: none;
+  }
+  
+  .sb-nav-link-icon svg{
+    width: 30px;
+    height: 30px;
+    margin: 0 !important;
+  }
+
+  #user-search{
+    display: none;
+  }
+
+  #copyright{
+    display: none;
+  }
+
+  .sb-sidenav-menu-heading{
+    display: none;
+  }
+
+  #main{
+    margin-left: 120px !important;
+    margin-right: 0px !important;
+    /* width: 100%; */
+  }
+
+  #welcome-user{
+    display: none;
+    box-shadow: "none";
+    
+  }
+
+  #users-responsive-menu{
+    background-color: #212529;
+    transform: translate(40px, -46px);
+  }
+
+  #responsive-users-more-menu{
+    max-height: 54px;
+  }
+
+  .sb-sidenav-collapse-arrow{
+    display: none !important;
+  }
+}
+
+#all-teams{
+  min-height: 85vh;
+}
+
+/* #single-team-style{
+  padding-left: 25%;
+  padding-right: 25%;
+  min-height: 50px;
+  background-color: #181E27;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 30px;
+  text-align: center;
+} */
+
+#single-team-style {
+  text-align: left;   
+  border-style: solid;
+  border-width:3px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px; 
+  background:#181E27;
+  width:335px;
+  padding:20px;
+  /*float:left; remove this*/
+  margin:15px;
+
+  /*add this*/ 
+  display:inline-block;
+  position:relative;
+}
+
+hr{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50px;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
+  border-width: 3px;
+  border-radius: 3px;
+  border-color: #f05f40;
+  opacity: 1 !important;
+}
+
+@media (min-width:1200px) {
+  header.masthead h1 {
+    font-size: 4rem;
+  }
+}
+
+section{
+  padding: 8rem 0;
+}
+
+
+#about{
+  max-height: 450px;
+}
+
+#about hr{
+  border-color: white;
+}
+
+.text-faded{
+  color: hsla(0,0%,100%,.7)
+}
+
+#services-container{
+  max-height: 100px;
+}
+
+#social-media-links{
+  margin-right: 10px;
+}
+
+#register-hover:hover{
+  color: rgb(240, 95, 64);
+}
+
+.btn.btn-primary {
+  font-family: "Raleway", cursive;
+  background-color: #239799;
+  border-color: #10c6d3;
+}
+
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary:hover {
+  font-family: "Raleway", cursive;
+  background-color: #10274c;
+  border-color: #10c6d3;
+}
+
+#button-login:hover, #button-login:active, #button-login:focus{
+  background-color: #eb3812 !important;
+  border-color: #df3611 !important;
+}
+
+#divert-name-id{
+  color: #f05f40;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: "Lucida Console", "Courier New", monospace !important;
+}
+
+#footer-home-height{
+  max-height: 160px;
+}
+
+#contact-us-row-styled{
+  max-height: 500px;
+}
+
+.user-avatar img{
+  width: 38px !important; 
+  margin-left: 10px;
+}
+
+.user-container{
+  padding-bottom: 7px !important;
+}
+
+#divert-logo-app-id{
+  margin-left: 15px;
+}
+
+.no-gutters{
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters>.col, .no-gutters>[class*=col-]{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.portfolio-box {
+  position: relative;
+  display: block;
+  max-width: 650px;
+  margin: 0 auto
+}
+
+.portfolio-box .portfolio-box-caption {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: 0;
+  color: #fff;
+  background: rgba(240,95,64,.9);
+  transition: all .2s
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+  padding: 0 15px;
+  font-family: Open Sans,Helvetica Neue,Arial,sans-serif
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+  font-size: 18px
+}
+
+.portfolio-box:hover .portfolio-box-caption {
+  opacity: 1
+}
+
+.portfolio-box:focus {
+  outline: none
+}
+
+.img-fluid, .img-thumbnail{
+  max-width: 100%;
+  height: auto;
+}
+
+#send-invite-btn-id{
+  background-color: rgba(240,95,64,.9) !important;
+  /* border-radius: 0 !important; */
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+  border-top-right-radius: 0.375rem!important;
+  border-bottom-right-radius: 0.375rem!important;
+  height: 100%;
+  width: 100%;
+}
+
+#send-invite-btn-id:hover{
+  opacity: 1.1;
+  background-color: #8f2f1b !important;
+  color: white;
+}
+
+#register-1-btn:hover{
+  opacity: 1.1;
+  background-color: #8f2f1b !important;
+  color: gray;
+}
+
+input[name="flexRadioDefault"] {
+	accent-color: green;
+}
+
+#btn-send-ivnite{
+  background-color: #bfbfbf !important;
+  /* border-radius: 0 !important; */
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+  border-top-right-radius: 0.375rem!important;
+  border-bottom-right-radius: 0.375rem!important;
+  height: 100%;
+  width: 100%;
+}
+
+#btn-send-ivnite:hover{
+  background-color: #929292 !important;
+}
+
+#avatar-responsive-change{
+  text-align: center;
+}
+
+#image-avatar-id{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-top: 40px;
+  object-fit: cover;
+}
+
+#label-avatar-update{
+  display: block;
+  width: 126px;
+  background: #dc3545;
+  color: #fff;
+  padding: 12px;
+  margin: 10px auto;
+  border-radius: 5px;
+  cursor: pointer;
+
+}

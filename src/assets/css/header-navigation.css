@@ -1,0 +1,185 @@
+a.dropdown-item:hover {
+  color: gray;
+  background-color: #fff;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+#profileWrapper {
+  width: 40px;
+  height: 40px;
+}
+
+#profileContainer {
+  width: 100%;
+  padding-bottom: 100%;
+  background-image: url('../../assets/img/brian-cruz.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.text-secondary-gray {
+  color: #B4B4B4;
+}
+
+#bg-yintly-inner-nav {
+  background-color: #ffffff;
+}
+
+.border-bottom-design a {
+  border-bottom: 1px solid #EDEFED;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.border-bottom-design a:last-child {
+  border-bottom: none;
+}
+
+.border-bottom-design-devider {
+  border-bottom: 2px solid #DF622E !important;
+}
+
+.w-200px {
+  width: 200px !important;
+}
+
+.w-300px {
+  width: 300px !important;
+}
+
+.text-wrap {
+  white-space: normal !important;
+}
+
+.notification-profile-image {
+  width: 40px;
+  height: 40px;
+}
+
+.fit-cover {
+  object-fit: cover;
+}
+
+.container-full {
+  height: 100vh !important;
+  min-width: 1600px;
+}
+
+.image-login {
+  height: 100vh !important;
+}
+
+.column-second {
+  background: url("../../assets/img/pexels-steve-johnson-1252848.jpg");
+  background-size: cover;
+  /*height: 100vh !important;*/
+  box-shadow: -5px 0px 10px 0px #f05f40;
+}
+
+.column-first {
+  margin: auto;
+  max-width: 600px;
+}
+
+.footer-styled {
+  height: 129px;
+}
+
+.footer-styled {
+  padding-top: 13px !important;
+  padding-bottom: 3px !important;
+  height: 77px;
+}
+
+.input-users-email {
+  margin-bottom: 42px !important;
+}
+
+input[type=radio] {
+  width: 18px;
+  height: 20px;
+  /*padding-bottom: 41px;*/
+}
+
+.form-check {
+  margin-bottom: 10px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip-container {
+  position: relative;
+  display: flex;
+  place-content: center;
+}
+
+/* styling of the tooltip display */
+
+p#tooltip-text {
+  display: none;
+  position: absolute;
+  top: -60px;
+  z-index: 1;
+  background: #00732c;
+  padding: 8px;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 2px;
+  animation: fadeIn 0.6s;
+}
+
+/* optional styling to add a "wedge" to the tooltip */
+
+p#tooltip-text:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border: 8px solid transparent;
+  border-top: 8px solid #00732c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+  background-color: white !important;
+  color: black;
+}
+
+
