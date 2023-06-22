@@ -40,8 +40,6 @@ function AllUsers() {
       }
 
       current.Users.forEach(async(user) =>{
-        console.log(user)
-        console.log(document.querySelector('#table-users-id'))
         document.querySelector('#table-users-id').removeAttribute('style')
 
         usersTable.innerHTML += `

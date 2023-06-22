@@ -11,7 +11,7 @@ import {
 } from 'mdb-react-ui-kit';
 import '../assets/css/tableCss.css'
 import axios from 'axios';
-import {getTeams, getTasks, deleteTask, usersInTeam, updateTask} from '../utils/APIRoutes';
+import {getTeams, getTasks, deleteTask, usersInTeam, updateTask, updateCompleteTaskByUser, getDashboard} from '../utils/APIRoutes';
 import {hideLoader} from '../App.js'
 import avatarLogoBlack from '../assets/img/avatar-logo-black.png';
 import Dots from '../assets/img/icons8-dots-30.png';
@@ -21,6 +21,7 @@ import { Form } from 'react-bootstrap';
 const url = window.location.search;
 const urlParams = new URLSearchParams(url);
 let teamId = urlParams.get("teamId")
+let userEmail = "";
 
 let user = localStorage.getItem("divert-user");
 user = JSON.parse(user);
@@ -28,6 +29,7 @@ user = JSON.parse(user);
 let taskId = "";
 let checkStatus = ['Delayed', 'Pending', 'Done']
 const icons = ['\uf00d','\uf110','\uf00c']
+let userCompletedTasks = 0;
 
 let task = {
   "name": "",
@@ -60,6 +62,15 @@ const truncate = (string, limit) =>{
   return string.slice(0, limit) + "...."
 }
 
+const updateTaskFunciton = async () =>{
+  userCompletedTasks = userCompletedTasks + 1;
+  const updateComplete = await axios.post(updateCompleteTaskByUser, {
+    teamId,
+    userEmail,
+    userCompletedTasks
+  })
+}
+
 const finishTask = async (num) =>{
   task.status = num
 
@@ -72,17 +83,25 @@ const finishTask = async (num) =>{
     toast.error(data.msg, toastOptions);
   }      
   
-  if(data){
-    await new Promise((r) => setTimeout(r, 1000));
-    window.location.reload(false);
-  }
+  // if(data){
+  //   await new Promise((r) => setTimeout(r, 1000));
+  //   window.location.reload(false);
+  // }
 }
+
 
   useEffect(() => {
     const loadData = async () => {
-      
+      const items = JSON.parse(localStorage.getItem('divert-user'));
+
+      userEmail = items.email
 
       let tasks = await axios.put(getTasks, {teamId});
+      let dashboard = await axios.post(getDashboard, { teamId })
+
+      let myCompletedTasks = dashboard.data.Users.find(user => user.email == items.email)
+
+      userCompletedTasks = myCompletedTasks.completedTasks
 
       let usersTable = document.getElementById('table-users-id').querySelector('tbody');
 
@@ -208,6 +227,7 @@ const finishTask = async (num) =>{
             </button>
             <button className='btn btn-success' style={{boxShadow: "none" }} onClick={() => {
                 finishTask(2);
+                updateTaskFunciton();
               }}>
                 Finish
             </button>

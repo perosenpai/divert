@@ -54,7 +54,10 @@ function Register_team_1_3() {
     teamName: urlParams.get("teamName"),
     teamAdmin: urlParams.get("teamAdmin"),
     paymentMethod: urlParams.get("paymentMethod"),
-    Users: []
+    Users: [],
+    notes: "",
+    teamInfo: "",
+    whatsNext: ""
   });
   
 
@@ -67,13 +70,16 @@ function Register_team_1_3() {
           { id: i, email: name, avatar: "" },
       ]);
 
-    const {teamName, teamAdmin, paymentMethod, Users} = values;
+    const {teamName, teamAdmin, paymentMethod, Users, notes, teamInfo, whatsNext} = values;
       
     const {data} = await axios.post(register_team_1_1, {
       teamName,
       teamAdmin,
       paymentMethod,
-      Users
+      Users,
+      notes,
+      teamInfo,
+      whatsNext
     });
     
       if(data.status === false){
@@ -183,7 +189,8 @@ function Register_team_1_3() {
                             id: existingUser._id,
                             email: existingUser.email,
                             avatar: existingUser.avatar,
-                            status: 2
+                            status: 2,
+                            completedTasks: 0
                           });
                           toast.error("Added.", toastOptions);
                           setName('');
@@ -195,7 +202,8 @@ function Register_team_1_3() {
                             id: i,
                             email: name,
                             avatar: "",
-                            status: 1
+                            status: 1,
+                            completedTasks: 0
                           });
                         }
                       }
@@ -217,7 +225,8 @@ function Register_team_1_3() {
                             id: existingUser._id,
                             email: existingUser.email,
                             avatar: existingUser.avatar,
-                            status: 2
+                            status: 2,
+                            completedTasks: 0
                           });
                           toast.error("Added.", toastOptions);
                           setName('');
@@ -229,7 +238,8 @@ function Register_team_1_3() {
                             id: i,
                             email: name,
                             avatar: "",
-                            status: 1
+                            status: 1,
+                            completedTasks: 0
                           });
                         }
 
@@ -248,7 +258,8 @@ function Register_team_1_3() {
                             id: existingUser._id,
                             email: existingUser.email,
                             avatar: existingUser.avatar,
-                            status: 2
+                            status: 2,
+                            completedTasks: 0
                           });
                           toast.error("Added.", toastOptions);
                           setName('');
@@ -260,7 +271,8 @@ function Register_team_1_3() {
                             id: i,
                             email: name,
                             avatar: "",
-                            status: 1
+                            status: 1,
+                            completedTasks: 0
                           });
                         }
                     }

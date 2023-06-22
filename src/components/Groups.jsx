@@ -25,7 +25,8 @@ let newGroupObj = {
   "name": "",
   "description": "",
   "teamId": teamId,
-  "Users": []
+  "Users": [],
+  "groupAdmin": ""
 }
 
 function Groups() {  
@@ -56,12 +57,10 @@ function Groups() {
     newGroupObj.name = event.target.value;
   }
 
+  
+
   const descriptionChange = (event) =>{
     newGroupObj.description = event.target.value;
-  }
-
-  const addUser = (event) =>{
-    console.log(event)
   }
 
   const checkTask = async () =>{
@@ -95,6 +94,13 @@ function Groups() {
   useEffect(() => {
     const loadData = async () => {
       let users = (await axios.put(usersInTeam, {teamId})).data.Users;
+
+      document.querySelector('#user-admin-selection-id').innerHTML = "<option></option>"
+
+      users.forEach(user =>{
+        let foundUser = user.email == newGroupObj.groupAdmin
+        document.querySelector('#user-admin-selection-id').innerHTML += `<option value="${user.email}" ${foundUser == true ? "selected" : ""}>${user.email}</option>`
+      })
 
       users.forEach(user =>{
         document.querySelector('#form-check-id').innerHTML += `

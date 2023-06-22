@@ -39,15 +39,15 @@ function EditUserRoles() {
     return current
   }
 
-  const changeUserRole= async (e)=>{
-    let confirmAction = window.confirm("Are you sure you want to change this Users role?");
-    if (confirmAction) {
-      console.log('Will update in near future.')
-    }
-  }
+  // const changeUserRole= async (e)=>{
+  //   let confirmAction = window.confirm("Are you sure you want to change this Users role?");
+  //   if (confirmAction) {
+  //     console.log('Will update in near future.')
+  //   }
+  // }
 
   const removeUser= async (e, email)=>{
-    let confirmAction = window.confirm("Are you sure you want to change this Users role?");
+    let confirmAction = window.confirm("Are you sure you want to remove this User?");
     if (confirmAction) {
       const {data} = await axios.put(removeUserApi, 
         {email , teamId}
@@ -66,8 +66,6 @@ function EditUserRoles() {
   useEffect(() => {
     const loadData = async () => {
       let current = await getCurrentTeam();
-
-      console.log(current)
 
       let usersTable = document.getElementById('table-users-id').querySelector('tbody');
 
@@ -93,15 +91,11 @@ function EditUserRoles() {
             </td>
             <td>${user.email}<small class="d-block">Current e-mail address of the user</small></td>
             <td>
-              ${user.groups ? user.groups : "Member"}
-            </td>
-            <td>
               <div class="dropdown" id="${user.email}">
                 <button id="dropdown-id-button" class="btn dropdown-toggle" variant="outline"  type="button" data-toggle="dropdown" aria-expanded="false" style="box-shadow: none">
                 <img src="${Dots}" style="height: 20px;"></i>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><button id="change-user-role-id" class="dropdown-item" type="button" style="box-shadow: none">Change User role</button></li>
                   <li><button id="remove-user-id" class="dropdown-item" type="button" style="box-shadow: none">Remove User</button></li>
                 </ul>
               </div
@@ -116,11 +110,7 @@ function EditUserRoles() {
         let removeUserBtn = document.querySelectorAll('#remove-user-id');
 
 
-        changeRoleBtns.forEach(btn =>{
-          btn.addEventListener('click', (e) =>{
-            changeUserRole()
-          })
-        });
+       
 
         removeUserBtn.forEach(btn =>{
           btn.addEventListener('click', (e) =>{
@@ -144,7 +134,6 @@ function EditUserRoles() {
             <tr>
               <th scope="col"></th>
               <th scope="col">E-mail</th>
-              <th scope="col">User role</th>
             </tr>
           </thead>
           <tbody>

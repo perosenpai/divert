@@ -73,7 +73,6 @@ function Divert_App_User() {
         userElement.innerHTML = "";
         
         current.Users.forEach(async(teamUsers) =>{
-          console.log(teamUsers)
           if(teamUsers.id !== user._id){
           userElement.innerHTML += `
                     <div class="user-container" style="padding: 10px; width: 300px">

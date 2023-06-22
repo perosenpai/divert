@@ -24,8 +24,14 @@ export const newTask = `${host}/api/createNewTask`
 export const getTasks = `${host}/api/getTasks`
 export const deleteTask = `${host}/api/deleteTask`
 export const updateTask = `${host}/api/UpdateTask`
+export const updateCompleteTaskByUser = `${host}/api/updateCompleteTaskByUser`
 
 export const newGroup = `${host}/api/newGroup`
 export const getGroups = `${host}/api/getGroups`
 export const deleteGroup = `${host}/api/deleteGroup`
 export const updateGroup = `${host}/api/updateGroup`
+
+export const getDashboard = `${host}/api/teamDashoard`
+export const updateNote = `${host}/api/updateNote`
+export const updateTeamInfo = `${host}/api/updateTeamInfo`
+export const updateWhatsNext = `${host}/api/updateWhatsNext`

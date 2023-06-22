@@ -12,7 +12,7 @@ import {
 import { Form } from 'react-bootstrap';
 import {FaPlus} from "react-icons/fa";
 import { event } from 'jquery';
-import {usersInTeam, newTask} from '../utils/APIRoutes'
+import {usersInTeam, newTask, getGroups} from '../utils/APIRoutes'
 import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify'; 
 import "react-toastify/dist/ReactToastify.css";
@@ -126,11 +126,16 @@ function Tasks() {
   useEffect(() => {
     const loadData = async () => {
       let users = (await axios.put(usersInTeam, {teamId})).data.Users;
-      
+      let groups = await axios.put(getGroups, { teamId })
+
       document.querySelector('#select-id').innerHTML = "<option></option>"
 
       users.forEach(user =>{
         document.querySelector('#select-id').innerHTML += `<option>${user.email}</option>`
+      })
+
+      groups.data?.forEach(group =>{
+        document.querySelector('#select-id').innerHTML += `<option>${group.newGroupObj.name}</option>`
       })
     };
 

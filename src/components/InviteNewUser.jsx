@@ -17,17 +17,6 @@ let existingUsers = []
 
 function InviteNewUser() {
 
-  // async function sendEmail(to, subject, body) {
-  //   // create an email object
-  //   const response = await fetch("/send-email", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({ to, subject, body })
-  //   });
-  // }
-
     const toastOptions = {
         position: "bottom-right",
         autoClose: 8000,
@@ -84,7 +73,8 @@ function InviteNewUser() {
                   email: existingUser.email,
                   avatar: existingUser.avatar,
                   status: 2,
-                  teamId: teamId
+                  teamId: teamId,
+                  completedTasks: 0
                 });
                 toast.error("Added.", toastOptions);
                 await new Promise((r) => setTimeout(r, 1500));
@@ -99,7 +89,8 @@ function InviteNewUser() {
                   email: name,
                   avatar: "",
                   status: 1,
-                  teamId: teamId
+                  teamId: teamId,
+                  completedTasks: 0
                 });
 
                 const {data} = await axios.put(addNewUserToTeam, 
@@ -137,7 +128,8 @@ function InviteNewUser() {
                   email: existingUser.email,
                   avatar: existingUser.avatar,
                   status: 2,
-                  teamId: teamId
+                  teamId: teamId,
+                  completedTasks: 0
                 });
                 toast.error("Added.", toastOptions);
                 await new Promise((r) => setTimeout(r, 1500));
@@ -152,7 +144,8 @@ function InviteNewUser() {
                   email: name,
                   avatar: "",
                   status: 1,
-                  teamId: teamId
+                  teamId: teamId,
+                  completedTasks: 0
                 });
 
                 const {data} = await axios.put(addNewUserToTeam, 
@@ -186,7 +179,8 @@ function InviteNewUser() {
                 email: existingUser.email,
                 avatar: existingUser.avatar,
                 status: 2,
-                teamId: teamId
+                teamId: teamId,
+                completedTasks: 0
               });
               toast.error("Added.", toastOptions);
               await new Promise((r) => setTimeout(r, 1500));
@@ -201,7 +195,8 @@ function InviteNewUser() {
                 email: name,
                 avatar: "",
                 status: 1,
-                teamId: teamId
+                teamId: teamId,
+                completedTasks: 0
               });
 
               const {data} = await axios.put(addNewUserToTeam, 
