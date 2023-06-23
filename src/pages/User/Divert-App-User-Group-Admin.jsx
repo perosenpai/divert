@@ -15,9 +15,9 @@ import avatarLogoBlack from '../../assets/img/avatar-logo-black.png';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import Dashboard from '../../components/Dashboard'
-import Tasks from '../../components/Tasks'
-import GanttChart from '../../components/GanttChart'
-import TableTasks from '../../components/TableTasks'
+import User_Tasks from '../../components/User_Tasks.jsx'
+import User_GanttChart from '../../components/User_GanttChart.jsx'
+import User_TableTasks from '../../components/User_TableTasks.jsx'
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Collapse from 'react-bootstrap/Collapse';
@@ -71,22 +71,24 @@ function Divert_App_User_Group_Admin() {
 
       userElement.innerHTML = "";
     
-      current.Users.forEach(async(user) =>{
+      current.Users.forEach(async(teamsUsers) =>{
+        if (teamsUsers.email != user.email) {
         userElement.innerHTML += `
                   <div class="user-container" style="padding: 10px; width: 300px">
                     <a class="user-avatar" style="margin-right: 10px" href="/divert-app-chat?teamId=${teamId}">
                       <img
                       class="rounded-circle img-fluid"
-                        src=${user.avatar ? user.avatar : avatarLogo}
+                        src=${teamsUsers.avatar ? teamsUsers.avatar : avatarLogo}
                         width=${48}
                         height=${48}
                         style="height:35px; object-fit: cover"
                       />
                       <p class="user-name" style="display: contents; font-size: 10px">
-                        <b>${user.email}</b>
+                        <b>${teamsUsers.email}</b>
                       </p>
                     </a>
                     </div>`;
+                    }
         return userElement;
       });
   
@@ -210,9 +212,9 @@ function Divert_App_User_Group_Admin() {
           </div>
           <div id="main" className="col-9 col-md-9" style={{marginTop: "79px", marginLeft: "auto"}}>
             <Container style={{paddingRight: "auto", margin: "0px", paddingTop: "50px"}}>
-              <GanttChart></GanttChart>
-              <Tasks></Tasks>
-              <TableTasks></TableTasks>
+              <User_GanttChart></User_GanttChart>
+              <User_Tasks></User_Tasks>
+              <User_TableTasks></User_TableTasks>
             </Container>
           </div>
         </div>

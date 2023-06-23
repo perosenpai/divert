@@ -152,8 +152,8 @@ function User_Groups() {
         <tr>
             <td>${group.newGroupObj.name}</td>
             <td>${desc}</td>
-            <td>${group.newGroupObj.teamAdmin}</td>
-            ${group.newGroupObj.teamAdmin == current.email? `<td><button class="btn btn-primary"><a href="/user-groups-admin?teamId=${teamId}">Go to group</a></button></td>` : ``}
+            <td>${group.newGroupObj.teamAdmin ? group.newGroupObj.teamAdmin : "There is no current group admin selected."}</td>
+            ${group.newGroupObj.teamAdmin == current.email? `<td><button class="btn btn-primary"><a href="/user-groups-admin?teamId=${teamId}&groupId=${group._id}&groupName=${group.newGroupObj.name}">Go to group</a></button></td>` : `<td></td>`}
             <td>
               <div class="dropdown" id="${group._id}">
                 <button id="dropdown-id-button" class="btn dropdown-toggle" variant="outline"  type="button" data-toggle="dropdown" aria-expanded="false" style="box-shadow: none">
