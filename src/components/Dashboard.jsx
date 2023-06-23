@@ -418,7 +418,7 @@ function Dashboard() {
                         <div className="card-body">
                             <BarChart
                                 id="barchart-id"
-                                width={900}
+                                width={1200}
                                 height={300}
                                 data={data}
                                 margin={{
