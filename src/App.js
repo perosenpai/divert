@@ -16,6 +16,7 @@ import Divert_All_Users from './pages/Admin/Divert-App-All-Users';
 import Divert_Edit_All_Users from './pages/Admin/Divert-App-Edit-User-Roles';
 import Divert_App_Settings from './pages/Admin/Divert-App-Settings';
 import Divert_App_User_Settings from './pages/Admin/Divert-App-Admin-Settings';
+import Divert_App_User_Group_Admin from './pages/User/Divert-App-User-Group-Admin'
 import User_Tasks from './pages/User/Divert-App-User-Tasks'
 import User_Settings from './pages/User/Divert-App-User-Settings'
 import User_Groups from './pages/User/Divert-App-User-Groups'
@@ -77,6 +78,7 @@ export default function App() {
         <Route path='/user-tasks' element={<User_Tasks />}/>
         <Route path='/user-settings' element={<User_Settings />}/>
         <Route path='/user-groups' element={<User_Groups />}/>
+        <Route path='/user-groups-admin' element={<Divert_App_User_Group_Admin />}/>
         <Route path='/divert-app-user-chat' element={<User_Chat />}/>
         <Route path='/settings' element={<Settings />}/>
       </Routes>

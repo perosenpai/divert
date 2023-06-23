@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
-import '../../assets/css/styles.css'
+import "../../assets/css/styles.css"
 import '../../assets/css/header-navigation.css';
 import "../../assets/css/sidebar.css"
 import "../../assets/css/sidebar-dark.css";
@@ -14,12 +14,14 @@ import avatarLogo from '../../assets/img/avatar-logo.png';
 import avatarLogoBlack from '../../assets/img/avatar-logo-black.png';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import User_Tasks from '../../components/User-Tasks'
+import Dashboard from '../../components/Dashboard'
+import Tasks from '../../components/Tasks'
+import GanttChart from '../../components/GanttChart'
+import TableTasks from '../../components/TableTasks'
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Collapse from 'react-bootstrap/Collapse';
 import $ from 'jquery';
-import ClipLoader from "react-spinners/ClipLoader";
 import DivertLogo from '../../assets/img/divert-logo.png';
 import {hideLoader} from '../../App.js'
 
@@ -30,7 +32,7 @@ const url = window.location.search;
 const urlParams = new URLSearchParams(url);
 let teamId = urlParams.get("teamId")
 
-function Divert_App_User() {
+function Divert_App_User_Group_Admin() {
 
   const [open, setOpen] = useState(false);
 
@@ -59,45 +61,41 @@ function Divert_App_User() {
     localStorage.removeItem("divert-user");
       navigate('/');
   };
+      
+  useEffect(() => {
+    const loadData = async () => {
+      let current = await getCurrentTeam();
+      
+      let teamName = document.getElementById('sidebar-team-name');
+      let userElement = document.getElementById('user-div-creating')
 
-    useEffect(() => {
-      const loadData = async () => {
-
-        let current = await getCurrentTeam();
+      userElement.innerHTML = "";
     
-    let teamName = document.getElementById('sidebar-team-name');
-    let userElement = document.getElementById('user-div-creating')
-
-    userElement.innerHTML = "";
-    
-    current.Users.forEach(async(teamUsers) =>{
-
-      if(teamUsers.email != user.email){
-      userElement.innerHTML += `
-                <div class="user-container" style="padding: 10px; width: 300px">
-                  <a class="user-avatar" style="margin-right: 10px" href="/divert-app-user-chat?teamId=${teamId}">
-                    <img
-                    class="rounded-circle img-fluid"
-                      src=${teamUsers.avatar ? teamUsers.avatar : avatarLogo}
-                      width=${48}
-                      height=${48}
-                      style="height:35px; object-fit: cover"
-                    />
-                    <p class="user-name" style="display: contents; font-size: 10px">
-                      <b>${teamUsers.email}</b>
-                    </p>
-                  </a>
-                  </div>`;
-      }
-      return userElement;
-    });
+      current.Users.forEach(async(user) =>{
+        userElement.innerHTML += `
+                  <div class="user-container" style="padding: 10px; width: 300px">
+                    <a class="user-avatar" style="margin-right: 10px" href="/divert-app-chat?teamId=${teamId}">
+                      <img
+                      class="rounded-circle img-fluid"
+                        src=${user.avatar ? user.avatar : avatarLogo}
+                        width=${48}
+                        height=${48}
+                        style="height:35px; object-fit: cover"
+                      />
+                      <p class="user-name" style="display: contents; font-size: 10px">
+                        <b>${user.email}</b>
+                      </p>
+                    </a>
+                    </div>`;
+        return userElement;
+      });
   
-    teamName.innerText = current.teamName;
-    hideLoader();
-      };
-        
-      loadData();
-    }, [])
+      teamName.innerText = current.teamName;
+      hideLoader();
+    };
+
+    loadData();
+  }, [])
     
     return (
       <>
@@ -145,7 +143,7 @@ function Divert_App_User() {
           </div>
         </nav>
         <div className="row">
-          <div id="sidebar-flex" className="col-3 col-md-3" style={{marginTop: "79px", paddingLeft: "0px", position: "fixed", marginRight: "auto"}}>
+        <div id="sidebar-flex" className="col-3 col-md-3" style={{marginTop: "79px", paddingLeft: "0px", position: "fixed", marginRight: "auto"}}>
             <Container style={{paddingLeft: "0px"}}>
               <div id="layoutSidenav_nav">
                 <div id="sidenavAccordion" className="sb-sidenav accordion sb-sidenav-dark">
@@ -161,7 +159,7 @@ function Divert_App_User() {
                           </div>
                           <span>Dashboard</span>
                         </a>
-                        <a className="nav-link active" href={`/user-tasks?teamId=${teamId}`}>
+                        <a className="nav-link" href={`/user-tasks?teamId=${teamId}`}>
                           <div className="sb-nav-link-icon">
                             <FaTasks className="fas fa-tasks" aria-hidden="true" />
                           </div>
@@ -169,18 +167,18 @@ function Divert_App_User() {
                         </a>
                       </div>
                       <div id="responsive-users-more-menu">
-                        <a onClick={() => setOpen(!open)} className="nav-link"  data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a onClick={() => setOpen(!open)} className="nav-link active"  data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                           <div className="sb-nav-link-icon">
                             <FaLayerGroup className="fas fa-users" aria-hidden="true" />
                           </div>
-                          <span>Groups</span>
+                          <b><span>Groups</span></b>
                           <div className="sb-sidenav-collapse-arrow">
                             <FaAngleRight className="fas fa-angle-down" />
                           </div>
                         </a>
                         <Collapse in={open}>
                           <div id="users-responsive-menu"className="sb-sidenav-menu-nested nav">
-                            <a className="nav-link" href={`/user-groups?teamId=${teamId}`}> All Groups</a>
+                          <b><a className="nav-link" href={`/user-groups?teamId=${teamId}`}> All Groups</a></b>
                           </div>
                         </Collapse>
                       </div>
@@ -212,7 +210,9 @@ function Divert_App_User() {
           </div>
           <div id="main" className="col-9 col-md-9" style={{marginTop: "79px", marginLeft: "auto"}}>
             <Container style={{paddingRight: "auto", margin: "0px", paddingTop: "50px"}}>
-            <User_Tasks></User_Tasks>
+              <GanttChart></GanttChart>
+              <Tasks></Tasks>
+              <TableTasks></TableTasks>
             </Container>
           </div>
         </div>
@@ -220,4 +220,4 @@ function Divert_App_User() {
   )
 }
 
-export default Divert_App_User
+export default Divert_App_User_Group_Admin

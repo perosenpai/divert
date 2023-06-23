@@ -220,7 +220,7 @@ function Divert_App_User() {
             </Container>
           </div>
           <div id="main" className="col-9 col-md-9" style={{marginTop: "79px", marginLeft: "auto"}}>
-            <Container style={{paddingLeft: "100px", paddingRight: "auto", margin: "0px"}}>
+            <Container style={{paddingRight: "auto", paddingTop:"60px", margin: "0px"}}>
             <DashboardUser></DashboardUser>
             </Container>
           </div>

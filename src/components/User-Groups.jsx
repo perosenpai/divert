@@ -25,6 +25,8 @@ const url = window.location.search;
 const urlParams = new URLSearchParams(url);
 let teamId = urlParams.get("teamId")
 
+let user = localStorage.getItem("divert-user");
+
 let checkStatus = ['Delayed', 'Pending', 'Done']
 
 let globalGroupFound; 
@@ -143,13 +145,15 @@ function User_Groups() {
       usersTable.innerHTML = "";
 
       groups.data.forEach(async(group) =>{
+        let current = JSON.parse(user)
         document.querySelector('#table-users-id').removeAttribute('style')
         let desc = truncate(group.newGroupObj.description, 30)
         usersTable.innerHTML += `
         <tr>
             <td>${group.newGroupObj.name}</td>
             <td>${desc}</td>
-            <td>${group.newGroupObj.Users.length}</td>
+            <td>${group.newGroupObj.teamAdmin}</td>
+            ${group.newGroupObj.teamAdmin == current.email? `<td><button class="btn btn-primary"><a href="/user-groups-admin?teamId=${teamId}">Go to group</a></button></td>` : ``}
             <td>
               <div class="dropdown" id="${group._id}">
                 <button id="dropdown-id-button" class="btn dropdown-toggle" variant="outline"  type="button" data-toggle="dropdown" aria-expanded="false" style="box-shadow: none">
@@ -187,35 +191,6 @@ function User_Groups() {
             initialState(foundGroup)
             
             setToggleOneModal(!toggleOneModal)
-            document.querySelector('#users-check-id').innerHTML = ""
-
-            users.forEach(user =>{
-
-                if(user.email !== foundGroup.newGroupObj.Users.find(x => x == user.email)){
-                    document.querySelector('#users-check-id').innerHTML += `
-                    <div class="form-check">
-                    <input class="form-check-input" style="box-shadow: none;" type="checkbox" value="${user.email}" id="${user.email}">
-                    <label id="checkbox-user-id" class="form-check-label" for="${user.email}">
-                        ${user.email}
-                    </label>
-                    </div>
-                    `;
-
-                    let checkBoxes = document.querySelectorAll('#checkbox-user-id');
-
-                    checkBoxes.forEach(chBox =>{
-                    chBox.previousElementSibling.addEventListener('change', () =>{
-
-                        if(chBox.previousElementSibling.checked){
-                            groupObj.Users.push(chBox.getAttribute('for'))
-                        }else{
-                            const index = groupObj.Users.indexOf(chBox.getAttribute('for'))
-                            const x = groupObj.Users.splice(index, 1)
-                        }
-                    })
-                    })
-                }
-            })
           })
         });
       
@@ -234,7 +209,7 @@ function User_Groups() {
             <tr>
               <th scope="col">Group Name</th>
               <th scope="col">Description</th>
-              <th scope="col">Users</th>
+              <th scope="col">Group admin</th>
             </tr>
           </thead>
           <tbody>
