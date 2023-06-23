@@ -152,8 +152,6 @@ function User_TableTasks() {
 
       let groupTasks = await axios.put(getGropTasks, {groupId});
 
-      console.log(groupTasks)
-
       let usersTable = document.getElementById('table-users-id').querySelector('tbody');
 
       usersTable.innerHTML = "";

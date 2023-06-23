@@ -1,6 +1,6 @@
 import React, { PureComponent, useEffect, useState } from 'react'
 import { FaLayerGroup, FaEllipsisV, FaComment, FaComments } from "react-icons/fa";
-import { getDashboard, getGroups, getTasks, updateNote, updateTeamInfo, updateWhatsNext } from '../utils/APIRoutes'
+import { getDashboard, getGroups, getTasks, updateNote, updateTeamInfo, updateWhatsNext, getGropTasks } from '../utils/APIRoutes'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 import {
@@ -170,11 +170,29 @@ function Dashboard() {
 
             document.querySelector('#groups-card-id').innerHTML = ``
 
-            groups.data.forEach(group => {
-                document.querySelector('#groups-card-id').innerHTML = `
-                        <h4 class="small font-weight-bold">${group.newGroupObj.name} <span class="float-right"></span></h4>
+            //call all group tasks
+
+            groups.data.forEach(async (group) => {
+                let i = 0;
+                let groupId = group._id
+                let groupTasks = await axios.put(getGropTasks, {groupId});
+
+                groupTasks.data.forEach(task =>{
+                    if(task.groupTask.status == 2){
+                        i=i+1;
+                    }
+                })
+
+                let percentage = i/groupTasks.data.length*100;
+
+                if(!percentage){
+                    percentage = 0;
+                }
+
+                document.querySelector('#groups-card-id').innerHTML += `
+                        <h4 class="small font-weight-bold">${group.newGroupObj.name} (${Math.trunc(percentage)}%)<span class="float-right"></span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: ${Math.trunc(percentage)}%"
                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                 `
@@ -432,7 +450,7 @@ function Dashboard() {
 
                     <div className="card shadow mb-4">
                         <div className="card-header py-3">
-                            <h6 className="m-0 font-weight-bold" style={{ color: "#F05F40" }}>Groups</h6>
+                            <h6 className="m-0 font-weight-bold" style={{ color: "#F05F40" }}>Work progress of groups</h6>
                         </div>
                         <div id="groups-card-id" className="card-body">
                             <h4 className="small font-weight-bold">UX/UI creation <span
