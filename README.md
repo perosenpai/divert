@@ -6,13 +6,13 @@ The application is built on a traditional web application, meaning it consists o
 
 The created application is a user-friendly software solution designed to provide better and simpler services to users. It offers many features for new users and for starting teams that are in the initial stages of the team-building process.
 
-### 1. User Interface of the Divert Application
+1. User Interface of the Divert Application
 
     - We will start with the home page of the application. The first main page upon opening the web application is the home page. On this page, you can read more about the application, its features, and functions.
 
 ![BUILD_FOLDER](src/assets/img/divert_1.png)
 
-### 2. Team registration, team name
+2. Team registration, team name
 
     - When creating a new team, you will be redirected to the first page where you write your inspiring team name.
 
@@ -22,13 +22,13 @@ The created application is a user-friendly software solution designed to provide
 
 ![BUILD_FOLDER](src/assets/img/divert_2.png)
 
-### 3. Dashboard for Admin
+3. Dashboard for Admin
 
     - At the forefront is the overview page (dashboard), where information about the number of team members, the number of tasks, and the number of pending requests is displayed. Below this overview, there is a graph showing data about team users and their progress in task completion. You will also find a notepad tab where you can add short notes whenever you think of something or need to remind yourself of something. Additionally, there is a graph displaying information about groups and their progress in work. At the end, there is a simple textual description of your team. Notes and description cards are editable, so you can change the values at any time. After adding a new user, the number of people in your team will change. As users complete tasks, the numbers increase, and the graph updates with the number of completed tasks.
 
 ![BUILD_FOLDER](src/assets/img/divert_3.png)
 
-### 4. Tasks, Gantt chart
+4. Tasks, Gantt chart
 
     - The next page for the administrator is the tasks page. After clicking on "Úlohy" (Tasks) in the side panel, the page with tasks will open. On this page, you will see a Gantt chart of tasks. You have the option to select a month or a year, and then the list of tasks you have created will be displayed. Each task includes a title, description, start date, end date, and the user or group to which the task is assigned.
 
@@ -36,13 +36,13 @@ The created application is a user-friendly software solution designed to provide
 
 ![BUILD_FOLDER](src/assets/img/divert_4.png)
 
-### 5. Creating new task
+5. Creating new task
 
     - Below that, there is a button to add a new task. After pressing it, a modal window will open where you can create a new task. In the first step, you will enter the title and description of the task, and also set its completion deadline. It's important to note that the start date is automatically set to today's date. All input fields are mandatory and must not be empty.
 
 ![BUILD_FOLDER](src/assets/img/divert_4_1.png)
 
-### 6. Users
+6. Users
 
     - The next page is the "Users" section, which consists of two subsections - "All Users" and "User Role Editing". When you open the "All Users" page, a table will be displayed containing all users of the current team. In this table, you will find the avatar of each specific user, their current email address, status, and the groups they are members of. The user's status can be marked as "inactive" or "active". If a user has successfully set up their profile and registered in the application, their profile will be displayed as active. In the case that a user has not yet registered, their status will be displayed as inactive. Above the table, there is an input field where you can invite additional members to your team by using their email address and pressing the "Send" button. Please note that team membership may be limited depending on the selected plan for your team.
 
